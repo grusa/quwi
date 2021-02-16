@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".form.ProjectFormFragment">
+
+    <EditText
+        android:id="@+id/nameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:autofillHints="Project name"
+        android:hint="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/desriptionEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+android:textSize="24sp"
+        android:autofillHints="Project description"
+        android:hint="@string/desc"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameEt"
+        app:layout_constraintTop_toBottomOf="@+id/nameEt" />
+
+
+    <Button
+        android:id="@+id/okBt"
+        android:layout_width="276dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/twcolor"
+        android:ems="10"
+        android:gravity="start|top"
+        android:text="@string/ok"
+        android:textSize="32sp"
+
+        app:layout_constraintEnd_toEndOf="@+id/desriptionEt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/desriptionEt"
+        app:layout_constraintTop_toBottomOf="@+id/desriptionEt" />
+
+    <Button
+        android:id="@+id/cancelBt"
+        android:layout_width="275dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/twcolor"
+        android:ems="10"
+        android:gravity="start|top"
+        android:text="@string/cancel"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@+id/okBt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/okBt"
+        app:layout_constraintTop_toBottomOf="@+id/okBt" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

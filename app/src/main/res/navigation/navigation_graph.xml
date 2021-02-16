@@ -17,5 +17,18 @@
         android:id="@+id/ProjectListFragment"
         android:name="earth.sochi.quwi.project.ProjectListFragment"
         android:label="fragment_project_list"
-        tools:layout="@layout/fragment_project_list" />
+        tools:layout="@layout/fragment_project_list" >
+        <action
+            android:id="@+id/action_ProjectListFragment_to_projectFormFragment"
+            app:destination="@id/projectFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectFormFragment"
+        android:name="earth.sochi.quwi.form.ProjectFormFragment"
+        android:label="fragment_project_form"
+        tools:layout="@layout/fragment_project_form" >
+        <action
+            android:id="@+id/action_projectFormFragment_to_ProjectListFragment"
+            app:destination="@id/ProjectListFragment" />
+    </fragment>
 </navigation>

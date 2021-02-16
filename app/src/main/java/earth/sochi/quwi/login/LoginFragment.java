@@ -30,11 +30,6 @@ import org.json.JSONObject;
 import earth.sochi.quwi.R;
 import earth.sochi.quwi.databinding.FragmentLoginBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private Button buttonLogin;
@@ -64,13 +59,13 @@ public class LoginFragment extends Fragment {
         binding.userName.setText(sharedPref.getString( getString(R.string.email), "Enter email"));
         binding.userPass.setText(sharedPref.getString(getResources().getString(R.string.password), "Enter password"));
         if (!isNetworkConnected()) {
-            binding.buttonLogin.setText("No internet");
+            binding.buttonLogin.setText(getResources().getString(R.string.noInternet));
             binding.buttonLogin.setEnabled(false);
         }
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (getLogin(binding.userName.getText().toString(),
-                        binding.userPass.getText().toString()) == "token") {
+                        binding.userPass.getText().toString()) ) {
                     try {
                         Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_projectListFragment);
                     } catch (Exception e) {
@@ -100,60 +95,61 @@ public class LoginFragment extends Fragment {
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
-    private void logout() {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url =getString(R.string.baseUrl)+"auth/logout";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-            }
-        });
-        queue.add(stringRequest);
+    private Boolean logout() {
+//        RequestQueue queue = Volley.newRequestQueue(getContext());
+//        String url =getString(R.string.baseUrl)+"auth/logout";
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//            }
+//        });
+//        queue.add(stringRequest);
+        return true;
     }
-    private String getLogin (String userName,String userPassword) {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url =getString(R.string.baseUrl)+"auth/login";
-
-        JSONObject postData = new JSONObject();
-        try {
-            postData.put("email", userName);
-            postData.put("password",userPassword);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.POST,url, postData,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Toast.makeText(getContext(),
-                                response.toString(),Toast.LENGTH_LONG).show();
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("data");
-                            for(int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                Toast.makeText(getContext(),
-                                        jsonObject.toString(),Toast.LENGTH_LONG).show();
-                            }
-                        }
-                        catch ( org.json.JSONException e){
-                            Toast.makeText(getContext(),
-                                    e.toString(),Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
-            }
-        });
-        queue.add(jsonObjectRequest);
-        return "token";
+    private Boolean getLogin (String userName,String userPassword) {
+//        RequestQueue queue = Volley.newRequestQueue(getContext());
+//        String url =getString(R.string.baseUrl)+"auth/login";
+//
+//        JSONObject postData = new JSONObject();
+//        try {
+//            postData.put("email", userName);
+//            postData.put("password",userPassword);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                Request.Method.POST,url, postData,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Toast.makeText(getContext(),
+//                                response.toString(),Toast.LENGTH_LONG).show();
+//                        try {
+//                            JSONArray jsonArray = response.getJSONArray("data");
+//                            for(int i = 0; i < jsonArray.length(); i++) {
+//                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                                Toast.makeText(getContext(),
+//                                        jsonObject.toString(),Toast.LENGTH_LONG).show();
+//                            }
+//                        }
+//                        catch ( org.json.JSONException e){
+//                            Toast.makeText(getContext(),
+//                                    e.toString(),Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        queue.add(jsonObjectRequest);
+        return true;
     }
 
 }
